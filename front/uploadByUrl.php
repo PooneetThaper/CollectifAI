@@ -2,13 +2,13 @@
 $uploadOk = 1;
 
 // check if the inputted link is valid
-$website = test_input($_POST["website"]);
+$website = $_POST["url"];
 if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
 	echo "Invalid URL";
 	$uploadOk = 1;
 }
 
-if (substr($website, -4) != ".jpg") && (substr($website, -5) != ".jpeg") {
+if ((substr($website, -4) != ".jpg") && (substr($website, -5) != ".jpeg")) {
 	echo "Sorry, only JPG and JPEG files are allowed.";
 	$uploadOk = 0;
 }
@@ -17,8 +17,12 @@ if (substr($website, -4) != ".jpg") && (substr($website, -5) != ".jpeg") {
 $slashIndex = strrpos($website, "/", -4);
 $imageName = substr($website, $slashIndex + 1);
 copy($website, "uploads/" . $imageName);
-$uploadOk = 1;
+
+
+echo "The file " . $imageName . " has been uploaded.";
 
 // pass arguments as command line arguments
-exec("../api.py f $imageName");
+exec("../api.py a $imageName");
+
+$uploadOk = 1;
 ?>
