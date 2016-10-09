@@ -28,9 +28,8 @@ if ($_FILES["fileToUpload"]["size"] > 500000000) {
     $uploadOk = 0;
 }
 // Allow certain file formats
-if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-&& $imageFileType != "gif" ) {
-    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+if($imageFileType != "jpg" && $imageFileType != "jpeg") {
+    echo "Sorry, only JPG and JPEG files are allowed.";
     $uploadOk = 0;
 }
 // Check if $uploadOk is set to 0 by an error
@@ -40,7 +39,7 @@ if ($uploadOk == 0) {
 } else {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
         echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-        
+
         // pass arguments as command line arguments
 		exec("../api.py a $target_file");
     } else {
