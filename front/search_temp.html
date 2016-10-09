@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CollectifAI - Search <?php echo $_POST["url"]; ?></title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+		<script type="text/javascript" src="js/bootstrap-filestyle.min.js"> </script>
+
+		<style>
+		body {
+			background-color: #cdfef2;
+		}
+
+		#top {
+			margin: auto;
+		    text-align: center;
+		    padding: 20px;
+
+		}
+		#content {
+			margin: auto;
+		    text-align: center;
+		    max-width: 80%;
+		    overflow: scroll;
+		}
+
+		#content img {
+			height: 300px;
+			background-color: white;
+			padding: 10px;
+			border-radius: 20px;
+			
+		}
+		</style>
+	</head>
+	<body>
+
+	<div id="top">
+		<h1> Search: <?php echo $_POST["url"]; ?> </h1>
+
+		<a href="search.html"><button type="button" class="btn btn-default btn-lg">Search Again</button></a>
+		<a href="index.html"><button type="button" class="btn btn-default btn-lg">Upload to Database</button></a>
+	</div>
+
+	<div id= "content">
+		<!-- image paths given by out.txt-->
+	</div>
+	</body>
+</html>
