@@ -12,7 +12,8 @@ def add():
     tagHolder=[]
     i=0
     #ClarifaiApi stuff
-    clarifai_api = ClarifaiApi("5ufSEyCVOzwUzNX5nDWPFXaTHbOTkbS3NzAGyrNa","JbqnMT_wofMV1IS-QZ0jIsYo-60tdHkQOFfqGxM7")
+    clarifai_api = ClarifaiApi("5ufSEyCVOzwUzNX5nDWPFXaTHbOTkbS3NzAGyrNa",
+        "JbqnMT_wofMV1IS-QZ0jIsYo-60tdHkQOFfqGxM7")
     path='front/uploads/'+argtext
     result = clarifai_api.tag_images(open(path, 'rb'))
     for tag in result['results'][0]['result']['tag']['classes']:
@@ -20,20 +21,22 @@ def add():
         tagHolder.append(tag)
     #MongoDB stuff
     ##Adding stuff
+    print path
+    print tagHolder
     result = db.photos.insert_one(
         {
             "path":path,
             "tags":tagHolder
         }
     )
-    print result.inserted_id
 
 def find():
     paths=''
     cursor = db.photos.find({"tags":argtext})
     for document in cursor:
-        paths.append(document.path)
-        paths.append('\n')
+        print document
+        paths += document["path"]
+        paths += '\n'
     f = open('front/out.txt', 'w')
     f.write(paths)
 
