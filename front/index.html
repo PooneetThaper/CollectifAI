@@ -13,6 +13,9 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 		<style>
+		body {
+			text-align: center;
+		}
 		</style>
 
 	</head>
@@ -22,7 +25,9 @@
 		<h1>Add to the database</h1>
 		<p>Make our app go 'round :)</p>
 		<form action="upload.php" method="post" enctype="multipart/form-data">
-			<input class="btn btn-default" type="file" type="button" name="fileToUpload" value="Choose Image" id="fileToUpload">
+			<label class="btn btn-default btn-file">
+				<input type="file" class="filestyle" data-icon="false" name="fileToUpload">
+			</label>
 			<input class="btn btn-default" type="submit" value="Upload Image" name="submit">
 		</form>
 
