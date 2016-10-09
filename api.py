@@ -34,7 +34,6 @@ def find():
     paths=''
     cursor = db.photos.find({"tags":argtext})
     for document in cursor:
-        print document
         paths += document["path"]
         paths += '\n'
     f = open('front/out.txt', 'w')
