@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from clarifai.client import ClarifaiApi
+import sys
 
 #ClarifaiApi stuff
 
@@ -52,3 +53,8 @@ while j<i:
 cursor = db.photos.find({"tags":"potato"})
 for document in cursor:
     print(document)
+
+
+###### trying to get a or f parameters
+print sys.argv[1] # this is the a or f argument
+print sys.argv[2] # this is the url or tag
