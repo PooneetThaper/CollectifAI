@@ -1,20 +1,24 @@
 <?php
-$file = "url";
-$data = file_get_contents($file);
-
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["data"]["name"]);
 $uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-	$check = getimagesize($_FILES["data"]["tmp_name"]);
-	if($check !== false) {
-		echo "File is an image - " . $check["mime"] . ".";
-		$uploadOk = 1;
-	} else {
-		echo "File is not an image.";
-		$uploadOk = 0;
-	}
+
+// check if the inputted link is valid
+$website = test_input($_POST["website"]);
+if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+	echo "Invalid URL";
+	$uploadOk = 1;
 }
+
+if (substr($website, -4) != ".jpg") && (substr($website, -5) != ".jpeg") {
+	echo "Sorry, only JPG and JPEG files are allowed.";
+	$uploadOk = 0;
+}
+
+// gets the index of the last occurrence of forward slash
+$slashIndex = strrpos($website, "/", -4);
+$imageName = substr($website, $slashIndex + 1);
+copy($website, "uploads/" . $imageName);
+$uploadOk = 1;
+
+// pass arguments as command line arguments
+exec("../api.py f $imageName");
 ?>
