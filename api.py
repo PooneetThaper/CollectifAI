@@ -31,13 +31,17 @@ def add():
     )
 
 def find():
+    printer=[]
     paths=''
-    cursor = db.photos.find({"tags":argtext})
+    cursor = db.photos.find()#{"tags":argtext})
     for document in cursor:
         paths += document["path"]
         paths += '\n'
+        printer.append(document["path"])
     f = open('front/out.txt', 'w')
     f.write(paths)
+    f.close()
+    print printer
 
 if __name__ == "__main__":
     if(opType=='a'):
