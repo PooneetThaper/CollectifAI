@@ -11,25 +11,3 @@ for tag in result['results'][0]['result']['tag']['classes']:
     tags.append(tag)
 
 print tags
-
-'''
-encoded_result = {}
-
-for key in result:
-    for value in result[key]:
-        if type(value) is str:
-            value = value.encode('ascii', 'ignore')
-        #if type(value) is list
-        encoded_result[key.encode('ascii', 'ignore')] = value # converts key from unicode to ascii
-
-
-#print result
-print encoded_result
-
-'''
-#ast.literal_eval(json.dumps(result))
-#result = ast.literal_eval(str(result))
-#print result
-#url = result['url']
-#tag = result['tag']
-#print url
