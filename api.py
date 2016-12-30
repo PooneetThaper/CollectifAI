@@ -6,7 +6,7 @@ opType=sys.argv[1]
 argtext=sys.argv[2]
 
 client = MongoClient()
-db = client.database
+db = client.Collectifai
 
 def add():
     tagHolder=[]
@@ -31,17 +31,18 @@ def add():
     )
 
 def find():
-    printer=[]
     paths=''
-    cursor = db.photos.find()#{"tags":argtext})
+    #MongoDB stuff
+    ##Finding stuff
+    print argtext
+    cursor = db.photos.find({"tags":argtext})
     for document in cursor:
         paths += document["path"]
         paths += '\n'
-        printer.append(document["path"])
     f = open('front/out.txt', 'w')
     f.write(paths)
     f.close()
-    print printer
+    print paths
 
 if __name__ == "__main__":
     if(opType=='a'):
